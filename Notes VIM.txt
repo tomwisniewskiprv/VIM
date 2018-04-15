@@ -1,0 +1,218 @@
+==================================
+ULTIMATE VIM Command cheat sheet :
+==================================
+
+--------------
+move & search:
+--------------
+
+h, j, k, l
+move left, down, up, right
+
+w, b, e, ge
+move one word at a time
+
+:[int] , [int]G
+jumps to line  ,  ..
+
+f[char] , t[char]
+move to next given char in line
+
+F[char] , T[char]
+move to previous char in line
+
+; and ,
+repeat last f or F
+
+0, $ , ^
+move to start/end of line , first non-blank character
+
+CTRL+u , Ctrl+d
+Halfscreen up , down
+
+Ctrl + f , Ctrl + b
+Screen forward , back
+
+/yourtext and then: n, N
+Search /yourtext forward
+?yourtext
+Search ?yourtext backwards
+
+# , *
+search for current word , forward , bacward
+
+
+} - go forward by paragraph (the next blank line)
+{ - go backward by paragraph (the next blank line)
+
+[{   ,  ]}
+begin , end of the block
+
+%
+brackets
+
+gg / G
+move to start / end of buffer
+-------------------------
+edit text
+change\substitute\delete:
+-------------------------
+
+i, I
+insert mode
+
+a, A
+append
+
+o, O
+add new line
+
+J , [int]J
+join lines , join [int] lines
+
+x, X
+remove a character
+
+r[char] , 
+replaces character below cursor
+
+S
+clear current line; to insert mode
+
+-----
+copy:
+-----
+yy, Y
+copy current line
+
+----
+cut:
+----
+
+d[movement] , c[movement]
+delete by giving movement , deletes and leaves you in 'insert' mode
+
+dd , cc
+delete line , .. insert mode
+
+D , d$ , C , c$
+delete to end of line, , .. leaves in 'insert' mode
+
+------
+paste:
+------
+p , P
+Paste copied text after cursor.
+
+-------------
+Visual mode :
+-------------
+v
+V
+in visual mode:
+ab - block ( )
+aB - block { }
+
+ib - inside block ( )
+iB - inside block { }
+
+---------------------------------
+Split windows / Auto Completion :
+---------------------------------
+:vsplit , :vsp 	<file> # vertical split
+:split ,  :sp	<file> # split
+
+:e <file> # edit file in new buffer
+:r <file> # 
+
+Ctrl + wq # close active window
+Ctrl + w + [movement keys] # move between windows
+Ctrl + p , + w # previous , next window
+Ctrl + ww # next window
+
+Ctrl-w r , Ctrl-w R # rotate windows
+
+
+--------------
+Vim and Tabs :
+--------------
+https://www.linux.com/learn/vim-201-intermediate-guide-vim
+
+:split  ^w s
+:vsplit ^w v
+:split filename :vsplit filename
+^w r move clockwise
+^w R move counterclockwise
+
+:tabnew or :tabnew file # open a file in a new tab
+Ctrl + wT 				# move the current split window into its own tab
+gt or  					# move to the next tab
+gT or 					# move to the previous tab
+
+:tabclose or :tabc 		# close the current tab and all its windows
+:tabonly or :tabo 		# close all tabs except for the current one
+
+-----------------
+Auto completion :
+-----------------
+Ctrl + n # autocompletion
+Ctrl + p # autocompletion backwards (?)
+
+Abberations (skróty)
+-----------
+:ab rlw ReallyLongWord #dodanie
+:una rlw # usuniêcie
+
+-----------------------
+Advanced combinations :
+-----------------------
+:%s/foo/bar/g
+    Find each occurrence of 'foo' (in all lines), and replace it with 'bar'. 
+
+:s/foo/bar/g
+    Find each occurrence of 'foo' (in the current line only), and replace it with 'bar'. 
+
+:%s/foo/bar/gc
+    Change each 'foo' to 'bar', but ask for confirmation first
+
+
+[n][action/movement]
+do n times, e.g. 3w
+
+
+%
+Goto corresponding parentheses
+
+ci[movement]
+change inside of given movement
+
+Esc
+change to normal mode
+
+
+-------------
+_vimrc
+-------------
+
+"My configuration starts here"
+:set guifont=Consolas:h12
+:syntax on
+:colorscheme molokai
+:set nu
+
+set encoding=utf-8
+set fileencodings=usc-bom,utf-8,latin2
+set termencoding=utf-8
+
+set ts=4
+set sts=4
+set sw=4
+set expandtab
+
+"F5 executes python interpreter"
+"Linux"
+"nnoremap <buffer> <F5> :exec '!python' "shellescape(@%, 1)<cr>
+"F5 just like last one"
+nnoremap <silent> <F5> :!python %<CR>
+"Koniec ustawieÅ„"
+
